@@ -22,6 +22,13 @@ Cryptogram!
 # Imports
 from quoters import Quote
 import time
+import random
+
+# Test
+alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M",
+            "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+taken_letters = []
+
 
 # Generates a random quote and appends each character to a list
 def generate_quote():
@@ -35,20 +42,24 @@ def generate_quote():
             return quote_list
         else:
             quote_list.append(quote[i])
-    # for i in range(len(quote_list)):
-    #     print(quote_list[i])
     return quote_list
 
 # Encrypts every letter found in the quote
 def encrypt_quote(quote):
     encrypted_quote = []
+    # Append each character from quote to new list
     for char in quote:
         encrypted_quote.append(char)
-    # for i in range(len(encrypted_quote)):
-    #     print(encrypted_quote[i])
+    # Replace each letter with an underscore
     for i in range(len(encrypted_quote)):
         if encrypted_quote[i].isalpha():
             encrypted_quote[i] = "_"
+    # Replace a few underscores with the original letter for hints
+    for i in range((int)(len(encrypted_quote)/10)):
+        random_num = random.randint(0, len(encrypted_quote)-1)
+        while not quote[random_num].isalpha():
+            random_num = random.randint(0, len(encrypted_quote)-1)
+        encrypted_quote[random_num] = quote[random_num]
     return encrypted_quote
 
 # Updates the puzzle with correct guess
