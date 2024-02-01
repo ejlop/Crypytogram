@@ -16,19 +16,35 @@ Cryptogram!
 [ ] Encrypt each letter (do I need a dictionary?)
 [ ] Create a key for each letter
 [ ] Create external interface for the main game
-[ ] Random number to leave X amount of letters known (depending on length of quote?)
+[X] Random number to leave X amount of letters known (depending on length of quote?)
 '''
 
 # Imports
 from quoters import Quote
 import time
 import random
+import os
 
 # Test
 alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M",
             "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-taken_letters = []
 
+# Dictionaries
+dictA = {"keyA":"W"}
+
+# Generates the key for the game
+def generate_key():
+    key = []
+    taken_letters = []
+    random_num = random.randint(0,25)
+    for i in range(len(alphabet)):
+        while str(alphabet[random_num]) in taken_letters:
+            random_num = random.randint(0,25)  
+        key.append(alphabet[random_num])
+        taken_letters.append(alphabet[random_num])
+    print(alphabet)
+    print(key)    
+    return key
 
 # Generates a random quote and appends each character to a list
 def generate_quote():
@@ -71,15 +87,21 @@ def generate_library():
     pass
 
 # Prints out the current state of the game
-def generate_game(encrypted_quote):
+def generate_game(encrypted_quote, key, quote):
     for char in encrypted_quote:
         print(char, end="")
-    # print(encrypted_quote)
+    print()
+    for i in range(len(encrypted_quote)):
+        if quote[i].isalpha():
+            print(alphabet[key.index(quote[i])], end="")
+        else:
+            print(" ", end="")
 
 # Does what the name says 
 def run_game():
+    key = generate_key()
     quote = generate_quote()
     encrypted_quote = encrypt_quote(quote)
-    generate_game(encrypted_quote)
+    generate_game(encrypted_quote, key, quote)
     
 run_game()
