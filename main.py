@@ -13,9 +13,9 @@ Cryptogram!
 --> For text-based program: create a "board" that updates currently known letters
 
 ** TO-DO: **
-[ ] Encrypt each letter (do I need a dictionary?)
-[ ] Create a key for each letter
-[ ] Create external interface for the main game
+[X] Encrypt each letter (do I need a dictionary?)
+[X] Create a key for each letter
+[ ] Create external interface for the main game?
 [X] Random number to leave X amount of letters known (depending on length of quote?)
 '''
 
@@ -25,12 +25,9 @@ import time
 import random
 import os
 
-# Test
+# Constants
 alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M",
             "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-
-# Dictionaries
-dictA = {"keyA":"W"}
 
 # Generates the key for the game
 def generate_key():
@@ -50,7 +47,7 @@ def generate_key():
 def generate_quote():
     quote = Quote.print().upper()
     print(quote)
-    while "HAND-PICKED RELATED QUOTES" in quote:
+    while "HAND-PICKED RELATED QUOTES" in quote or len(quote) < 60:
         quote = Quote.print().upper()
     quote_list = []
     for i in range(len(quote)):
@@ -78,7 +75,7 @@ def encrypt_quote(quote):
         encrypted_quote[random_num] = quote[random_num]
     return encrypted_quote
 
-# Updates the puzzle with correct guess
+# Requests a guess from the user and updates the game
 def guess(letter, quote, encrypted_quote):
     pass
 
@@ -86,7 +83,7 @@ def guess(letter, quote, encrypted_quote):
 def generate_library():
     pass
 
-# Prints out the current state of the game
+# Refreshes and prints out the current state of the game
 def generate_game(encrypted_quote, key, quote):
     for char in encrypted_quote:
         print(char, end="")
@@ -99,6 +96,7 @@ def generate_game(encrypted_quote, key, quote):
 
 # Does what the name says 
 def run_game():
+    os.system('cls')
     key = generate_key()
     quote = generate_quote()
     encrypted_quote = encrypt_quote(quote)
