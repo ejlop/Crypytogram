@@ -5,25 +5,12 @@ APCSP Create Performance Task
 Cryptogram!
 '''
 
-'''
-** IDEAS SO FAR: **
---> Create a dictionary to encrypt each letter
---> Function to traverse the diverse the list of the alphabet, ykyk
---> Keep or remove having to solve for the author's name (if there is one)?
---> For text-based program: create a "board" that updates currently known letters
-
-** TO-DO: **
-[X] Encrypt each letter (do I need a dictionary?)
-[X] Create a key for each letter
-[ ] Create external interface for the main game?
-[X] Random number to leave X amount of letters known (depending on length of quote?)
-'''
-
 # Imports
 from quoters import Quote
 import time
 import random
 import os
+import keyboard
 
 # Constants
 alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M",
@@ -76,7 +63,13 @@ def encrypt_quote(quote):
     return encrypted_quote
 
 # Requests a guess from the user and updates the game
-def guess(letter, quote, encrypted_quote):
+def guess(letter, quote, encrypted_quote, key):
+    pass
+
+# Selects a letter based on arrow inputs
+def select_letter():
+    index = 0
+    pos = "^"
     pass
 
 # Generates known keys for each letter
@@ -87,7 +80,7 @@ def generate_library():
 def generate_game(encrypted_quote, key, quote):
     for char in encrypted_quote:
         print(char, end="")
-    print()
+    print("\n")
     for i in range(len(encrypted_quote)):
         if quote[i].isalpha():
             print(alphabet[key.index(quote[i])], end="")
@@ -101,5 +94,6 @@ def run_game():
     quote = generate_quote()
     encrypted_quote = encrypt_quote(quote)
     generate_game(encrypted_quote, key, quote)
+    # select_letter(quote, encrypted_quote)
     
 run_game()
