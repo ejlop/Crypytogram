@@ -16,6 +16,17 @@ import keyboard
 alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M",
             "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 
+# Prints out the controls of the game
+def print_controls():
+    print("----------")
+    print("CONTROLS:")
+    print(" ← : Move Left\n",
+          "→ : Move Right\n",
+          "↑ : Hint\n",
+          "↓ : Select\n",
+          "Q : Quit")
+    print("----------")
+
 # Generates the key for the game
 def generate_key():
     key = []
@@ -59,17 +70,6 @@ def encrypt(quote):
             random_num = random.randint(0, len(encrypted_quote)-1)
         encrypted_quote[random_num] = quote[random_num]
     return encrypted_quote
-
-# Prints out the controls of the game
-def print_controls():
-    print("----------")
-    print("CONTROLS:")
-    print(" ← : Move Left\n",
-          "→ : Move Right\n",
-          "↑ : Hint\n",
-          "↓ : Select\n",
-          "Q : Quit")
-    print("----------")
 
 # Selects a letter based on arrow inputs
 index = 0
