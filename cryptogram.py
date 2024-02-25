@@ -40,6 +40,7 @@ def generate_key():
     return key
 
 # Generates a random quote and appends each character to a list
+# test comment
 def generate_quote():
     quote = Quote.print().upper()
     print(quote)
