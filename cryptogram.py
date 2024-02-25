@@ -40,11 +40,12 @@ def generate_key():
     return key
 
 # Generates a random quote and appends each character to a list
-# test comment
 def generate_quote():
     quote = Quote.print().upper()
     print(quote)
-    while "HAND-PICKED RELATED QUOTES" in quote:
+    # The second condition of this loop can be increased or decreased
+    # depending on how long the puzzle is desired to be.
+    while "HAND-PICKED RELATED QUOTES" in quote or len(quote) > 60:
         quote = Quote.print().upper()
     quote_list = []
     for i in range(len(quote)):
