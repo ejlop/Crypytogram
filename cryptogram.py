@@ -1,5 +1,4 @@
 '''
-Eduardo Lopez
 01/29/24
 APCSP Create Performance Task
 Cryptogram!
@@ -129,6 +128,7 @@ def hint():
     global quote
     global hint_num
     index = random.randint(0, len(encrypted_quote)-1)
+    # Ensures that the hint is not an already correctly guessed/given letter
     while (not encrypted_quote[index].isalpha() or not encrypted_quote[index] == "_") and (encrypted_quote[index] == quote[index]):
         index = random.randint(0, len(encrypted_quote)-1)
     encrypted_quote[index] = quote[index]
