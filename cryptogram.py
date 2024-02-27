@@ -5,11 +5,11 @@ Cryptogram!
 '''
 
 # Imports
-from quoters import Quote
-import time
-import random
-import os
-import keyboard
+from quoters import Quote   # https://pypi.org/project/quoters/
+import time                 # https://docs.python.org/3/library/time.html
+import random               # https://docs.python.org/3/library/os.html
+import os                   # https://docs.python.org/3/library/os.html
+import keyboard             # https://pypi.org/project/keyboard/
 
 # Constants
 alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M",
